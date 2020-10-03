@@ -4,7 +4,6 @@ import VueRouter from 'vue-router'
 
 Vue.use(BootstrapVue)
 
-
 Vue.use(VueRouter)
 
 import App from './App.vue'
