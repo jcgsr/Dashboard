@@ -3,7 +3,7 @@
     <b-navbar toggleable="lg" type="dark" variant="secondary">
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <router-link to="/">
-        <i class="fas fa-home"></i>
+        <i class="fas fa-home text-white"></i>
       </router-link>
 
       <b-collapse id="nav-collapse" is-nav>

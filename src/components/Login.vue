@@ -1,40 +1,36 @@
 <template>
   <div class="login">
     <h1>Login</h1>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">     
-     
+    <b-card class="shadow">
+      <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+        <b-form-group
+          id="input-group-1"
+          label="E-mail:"
+          label-for="input-1"
+          description="Seu e-mail nunca será compartilhado."
+        >
+          <b-form-input
+            id="input-1"
+            v-model="form.email"
+            type="email"
+            required
+            placeholder="Digite seu e-mail"
+          ></b-form-input>
+        </b-form-group>
 
-      <b-form-group
-        id="input-group-1"
-        label="E-mail:"
-        label-for="input-1"
-        description="Seu e-mail nunca será compartilhado."
-      >
-        <b-form-input
-          id="input-1"
-          v-model="form.email"
-          type="email"
-          required
-          placeholder="Digite seu e-mail"
-        ></b-form-input>
-      </b-form-group>
+        <b-form-group id="password" label="Senha:" label-for="password">
+          <b-form-input
+            id="password"
+            v-model="form.password"
+            type="password"
+            required
+            placeholder="Digite sua senha"
+          ></b-form-input>
+        </b-form-group>
 
-      <b-form-group
-        id="password"
-        label="Senha:"
-        label-for="password"        
-      >
-        <b-form-input
-          id="password"
-          v-model="form.password"
-          type="password"
-          required
-          placeholder="Digite sua senha"
-        ></b-form-input>
-      </b-form-group>
-
-      <b-button type="submit" variant="primary">Entrar</b-button>
-    </b-form>
+        <b-button type="submit" variant="primary">Entrar</b-button>
+      </b-form>
+    </b-card>
     <!-- <b-card class="mt-3" header="Form Data Result">
       <pre class="m-0">{{ form }}</pre>
     </b-card> -->
@@ -47,8 +43,8 @@ export default {
   data() {
     return {
       form: {
-        email: "",       
-        password: ""
+        email: "",
+        password: "",
       },
       show: true,
     };
@@ -61,9 +57,9 @@ export default {
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
-      this.form.email = "";      
+      this.form.email = "";
       this.form.password = "";
-     
+
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {
@@ -75,8 +71,8 @@ export default {
 </script>
 
 <style lang="css">
-   .login {
-      width: 40%;
-      margin: 0 auto;
-   }
+.login {
+  width: 40%;
+  margin: 0 auto;
+}
 </style>

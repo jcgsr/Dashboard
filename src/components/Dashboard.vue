@@ -19,6 +19,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "Dashboard"
+}
+</script>
+
 <style lang="css">
 .lista {
   list-style: none;
