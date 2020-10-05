@@ -1,14 +1,13 @@
 <template>
   <div id="header">
     <b-navbar toggleable="lg" type="dark" variant="secondary">
-      
-
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <router-link to="/">
+        <i class="fas fa-home"></i>
+      </router-link>
 
       <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-        
-        </b-navbar-nav>
+        <b-navbar-nav> </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
@@ -24,7 +23,7 @@
           </b-nav-form>
 
           <b-nav-item-dropdown text="Fonte" right>
-            <b-dropdown-item href="#">Arial</b-dropdown-item>
+            <b-dropdown-item href="#">Lato</b-dropdown-item>
             <b-dropdown-item href="#">Georgia</b-dropdown-item>
             <b-dropdown-item href="#">Roboto</b-dropdown-item>
             <b-dropdown-item href="#">Ubuntu</b-dropdown-item>
@@ -35,8 +34,12 @@
             <template v-slot:button-content>
               <em>Usuário</em>
             </template>
-            <b-dropdown-item href="#">Entrar</b-dropdown-item>
-            <b-dropdown-item href="#">Sair</b-dropdown-item>
+            <b-dropdown-item>
+              <router-link to="/login">Entrar</router-link>
+            </b-dropdown-item>
+            <b-dropdown-item>
+              <router-link to="/register">Cadastrar</router-link>
+            </b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -46,7 +49,6 @@
 
 <style lang="css">
 #id {
-   margin: 0 auto;
+  margin: 0 auto;
 }
-   
 </style>

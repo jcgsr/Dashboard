@@ -7,10 +7,12 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  name: 'Home',
+  data() {
+    return {
+      msg: 'Meus Escritos'
+    }
+  },
 }
 </script>
 

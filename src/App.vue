@@ -1,57 +1,67 @@
 <template>
   <div id="app">
     <Header />
-    <Home msg="Meus Escritos"/>
+    <transition
+      mode="out-in"
+      enter-active-class="animate__animated animate__jello"
+      leave-active-class="animate__animated animate__jello"
+    >
+      <router-view></router-view>
+    </transition>
+
     <p class="date">{{ currentDate }}</p>
     <Footer />
   </div>
 </template>
 
 <script>
-import Home from './components/Home.vue'
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Home, Header, Footer
+    Header,
+    Footer,
   },
   data() {
     return {
-      currentDate: ''
-    }
+      currentDate: "",
+    };
   },
   methods: {
     today() {
-      let date = new Date()
-      this.currentDate = date.toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric'
-      })
-    }
+      let date = new Date();
+      this.currentDate = date.toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      });
+    },
   },
   mounted() {
-    this.today()
-  }
-}
+    this.today();
+  },
+};
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50; 
+  color: #2c3e50;
 }
 
 .date {
   padding: 1rem;
 }
 
-html, body, * {
+html,
+body,
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
