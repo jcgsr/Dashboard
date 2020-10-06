@@ -2,7 +2,8 @@
   <div class="login">
     <h1>Login</h1>
     <b-card class="shadow">
-      <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+      <div v-if="error" class="alert alert-danger">{{ error }}</div>
+      <b-form @submit.prevent="submit" v-if="show">
         <b-form-group
           id="input-group-1"
           label="E-mail:"
@@ -31,13 +32,12 @@
         <b-button type="submit" variant="primary">Entrar</b-button>
       </b-form>
     </b-card>
-    <!-- <b-card class="mt-3" header="Form Data Result">
-      <pre class="m-0">{{ form }}</pre>
-    </b-card> -->
   </div>
 </template>
 
 <script>
+import firebase from "firebase";
+
 export default {
   name: "Login",
   data() {
@@ -47,24 +47,20 @@ export default {
         password: "",
       },
       show: true,
+      error: null,
     };
   },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
-      alert(JSON.stringify(this.form));
-    },
-    onReset(evt) {
-      evt.preventDefault();
-      // Reset our form values
-      this.form.email = "";
-      this.form.password = "";
-
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
+    submit() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.form.email, this.form.password)
+        .then(() => {
+          this.$router.replace({ name: "dashboard" });
+        })
+        .catch((err) => {
+          this.error = err.message;
+        });
     },
   },
 };

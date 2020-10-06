@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 class="mt-4">Bem-vindo ao seu Painel de Controle</h1>
     <b-button v-b-toggle.sidebar-right>Painel</b-button>
     <b-sidebar id="sidebar-right" title="Painel" left shadow>
       <div class="px-3 py-2">
