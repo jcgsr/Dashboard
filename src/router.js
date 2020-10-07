@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard'
 
 Vue.use(Router)
 
+
 export default new Router({
    mode: 'history',
    linkExactActiveClass: 'link-active',
@@ -21,11 +22,11 @@ export default new Router({
       component: Register
    }, {
       path: '/login',
-      name: 'login',
+      name: 'login',     
       component: Login
    }, {
       path: '/dashboard',
-      name: 'dashboard',
+      name: 'dashboard',      
       component: Dashboard
    }]
 })

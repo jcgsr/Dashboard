@@ -2,6 +2,7 @@ import Vue from 'vue'
 import { BootstrapVue } from 'bootstrap-vue'
 import VueRouter from 'vue-router'
 import * as firebase from 'firebase'
+import store from './store'
 
 import router from './router'
 
@@ -31,7 +32,12 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 
+firebase.auth().onAuthStateChanged(user => {
+  store.dispatch('fetchUser', user)
+})
+
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

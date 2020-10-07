@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="mt-4">Bem-vindo ao seu Painel de Controle</h1>
+    <h1 class="mt-4">Bem-vindo, {{ user.data.displayName }}!</h1>
     <b-button v-b-toggle.sidebar-right>Painel</b-button>
     <b-sidebar id="sidebar-right" title="Painel" left shadow>
       <div class="px-3 py-2">
@@ -21,8 +21,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: "Dashboard"
+  name: "Dashboard",
+  computed: {
+    ...mapGetters({
+      user: 'user'
+    })
+  }
 }
 </script>
 
