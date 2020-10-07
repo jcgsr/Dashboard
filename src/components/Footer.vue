@@ -3,7 +3,7 @@
     &copy;{{ new Date().getFullYear() }}{{ footer }}
     <div>
       {{ msg }}
-      <a class="btn btn-info btn-sm" :href="link">Jovane</a>
+      <a :href="link"><b-button variant="info">Jovane</b-button></a>
     </div>
   </footer>
 </template>
@@ -34,6 +34,11 @@ footer {
 }
 
 .foot a {
-  font-size: small;
+  font-size: smaller;
+  
+}
+
+.btn {
+  margin-top: auto;
 }
 </style>

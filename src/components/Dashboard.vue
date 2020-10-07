@@ -6,7 +6,9 @@
       <div class="px-3 py-2">
         <ul class="lista">
           <b-button variant="success">
-            <li><i class="fas fa-plus-square"></i> Adicionar Escritos</li>
+            <router-link to="/escritos">
+              <li><i class="fas fa-plus-square"></i> Adicionar Escritos</li>
+            </router-link>
           </b-button>
           <b-button>
             <li><i class="fas fa-pen-square"></i> Editar Escritos</li>
@@ -21,16 +23,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   name: "Dashboard",
   computed: {
     ...mapGetters({
-      user: 'user'
-    })
-  }
-}
+      user: "user",
+    }),
+  },
+};
 </script>
 
 <style lang="css">
