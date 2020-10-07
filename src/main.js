@@ -5,6 +5,7 @@ import * as firebase from 'firebase'
 import store from './store'
 
 import router from './router'
+import './axios'
 
 Vue.use(BootstrapVue)
 
