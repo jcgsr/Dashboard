@@ -14,7 +14,7 @@
             <li><i class="fas fa-pen-square"></i> Editar Escritos</li>
           </b-button>
           <b-button variant="danger">
-            <li><i class="fas fa-minus-square"></i> Excluir Escritos</li>
+            <li><i class="fas fa-minus-square text-white"></i> Excluir Escritos</li>
           </b-button>
         </ul>
       </div>
@@ -43,7 +43,12 @@ export default {
 }
 
 .btn {
-  display: list-item;
+  display: flex;
   margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.fa, .fab, .fad, .fal, .far, .fas {
+  color: white;
 }
 </style>

@@ -29,6 +29,11 @@
         >Salvar</b-button
       >
     </b-card>
+    <b-button class="mt-4">
+      <router-link to="/dashboard">
+        <i class="fas fa-arrow-circle-left"></i>
+      </router-link>
+    </b-button>
   </div>
 </template>
 
@@ -46,13 +51,12 @@ export default {
   },
   methods: {
     salvar() {
-       this.$http.post('usuarios.json', this.usuario)
-         .then(() => {
-            this.usuario.data_obra = ''
-            this.usuario.nome_autor = ''
-            this.usuario.nome_obra = ''
-            this.usuario.obra = ''
-         })
+      this.$http.post("usuarios.json", this.usuario).then(() => {
+        this.usuario.data_obra = "";
+        this.usuario.nome_autor = "";
+        this.usuario.nome_obra = "";
+        this.usuario.obra = "";
+      });
     },
   },
 };
