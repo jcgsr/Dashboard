@@ -69,4 +69,7 @@ li {
 a {
   color: #42b983;
 }
+.btn {
+  margin: 0 auto;
+}
 </style>
