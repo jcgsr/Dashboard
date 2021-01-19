@@ -19,11 +19,11 @@
         class="mb-2"
         v-model="usuario.nome_obra"
       ></b-form-input>
-      <b-form-textarea
-        id="textarea"
-        placeholder="Coloque seus Escritos aqui..."
-        v-model="usuario.obra"
-      ></b-form-textarea>
+      
+      <!-- Vue2Editor -->
+      <div class="vue_editor">
+        <vue-editor v-model="usuario.obra"></vue-editor>  
+      </div>
 
       <b-button class="mt-2" @click.prevent="salvar" variant="success"
         >Salvar</b-button
@@ -38,25 +38,44 @@
 </template>
 
 <script>
+// import firebase from "firebase";
+import { VueEditor } from "vue2-editor"
 export default {
+  name: "Escritos Formulário",
+  components: {
+  VueEditor
+            },
   data() {
     return {
+      name: "usuarios",
+      usuarioDados: "",
+      id: null,
       usuario: {
         data_obra: "",
         nome_autor: "",
         nome_obra: "",
         obra: "",
       },
-    };
+    }
   },
   methods: {
     salvar() {
-      this.$http.post("usuarios.json", this.usuario).then(() => {
-        this.usuario.data_obra = "";
-        this.usuario.nome_autor = "";
-        this.usuario.nome_obra = "";
-        this.usuario.obra = "";
-      });
+      const metodo = this.id ? "patch" : "post"
+      const finalUrl = this.id ? `${this.id}.json` : ".json"
+      this.$http[metodo](`usuarios${finalUrl}`, this.usuario)
+      alert('Escrito adicionado com sucesso!')
+       // const uid = firebase.auth().currentUser.uid
+       // this.$http.post("usuarios.json", this.usuario).child(uid).set({
+       // this.usuario.data_obra = "";
+       // this.usuario.nome_autor = "";
+       // this.usuario.nome_obra = "";
+       // this.usuario.obra = "";
+        //return firebase.database().ref('usuarios').child(uid).set({
+          // name: this.form.name
+            // })
+
+      // });
+      // alert('Escrito adicionado com sucesso!')
     },
   },
 };

@@ -11,7 +11,9 @@
           <strong>Autor: </strong> {{ usuario.nome_autor }} <br />
           <strong>Obra: </strong> {{ usuario.nome_obra }} <br />
           <b-card class="shadow">
+          <div v-html="usuario.obra">
             {{ usuario.obra }}
+          </div>
           </b-card>
         </b-list-group-item>
       </b-list-group>

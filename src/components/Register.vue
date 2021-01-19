@@ -67,27 +67,31 @@ export default {
   },
   methods: {
     submit() {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.form.email, this.form.password)
-        .then((data) => {
-          data.user
-            .updateProfile({
+      firebase.auth().createUserWithEmailAndPassword(this.form.email, this.form.password).then(data => {
+          data.user.updateProfile({
               displayName: this.form.name,
             })
-            .then(() => {});
+           .then(() => {});
+            alert('Cadastro efetuado com sucesso!')
+            this.form.name = ''
+            this.form.email = ''
+            this.form.password = ''
         })
-        .catch((err) => {
-          this.error = err.message;
+      const uid = firebase.auth().currentUser.uid
+        return firebase.database().ref('usuarios').child(uid).set({
+          name: this.form.name
+            })
+       .catch((err) => {
+         this.error = err.message;
         });
     },
   },
 };
 </script>
 
-<style lang="css">
+<style scoped>
 .cadastro {
-  width: 40%;
+  width: 70%;
   margin: 0 auto;
 }
 </style>

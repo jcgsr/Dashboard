@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="mt-4">Bem-vindo, {{ user.data.displayName }}!</h1>
+    <h1 class="mt-4">Bem-vindo(a), {{ user.data.displayName }}!</h1>
     <b-button v-b-toggle.sidebar-right>Painel</b-button>
     <b-sidebar id="sidebar-right" title="Painel" left shadow>
       <div class="px-3 py-2">
@@ -11,7 +11,10 @@
             </router-link>
           </b-button>
           <b-button>
-            <li><i class="fas fa-pen-square"></i> Editar Escritos</li>
+            <router-link to="/edit">
+              <li><i class="fas fa-pen-square"></i> Editar Escritos</li>
+            </router-link>
+
           </b-button>
           <b-button variant="danger">
             <li><i class="fas fa-minus-square text-white"></i> Excluir Escritos</li>

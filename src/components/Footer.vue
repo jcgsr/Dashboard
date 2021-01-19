@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    &copy;{{ new Date().getFullYear() }}{{ footer }}
+    &copy;2020 - {{ new Date().getFullYear() }}.{{ footer }}
     <div>
       {{ msg }}
       <a :href="link"><b-button variant="info">Jovane</b-button></a>
@@ -12,7 +12,7 @@
 export default {
   data() {
     return {
-      footer: " - Meus Escritos",
+      footer: " Meus Escritos",
       msg: "Site criado e desenvolvido por ",
       link: '"https://jcgsr.github.io/",',
     };
