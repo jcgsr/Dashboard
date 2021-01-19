@@ -37,6 +37,6 @@ footer {
 }
 
 .btn {
-  margin-top: auto;
+  margin: 0 auto;
 }
 </style>
