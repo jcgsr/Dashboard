@@ -22,33 +22,33 @@
             >
           </b-nav-form>
 
-          <b-nav-item-dropdown text="Fonte" right>
-            <b-dropdown-item href="#">Lato</b-dropdown-item>
-            <b-dropdown-item href="#">Georgia</b-dropdown-item>
-            <b-dropdown-item href="#">Roboto</b-dropdown-item>
-            <b-dropdown-item href="#">Ubuntu</b-dropdown-item>
-          </b-nav-item-dropdown>
-
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template v-slot:button-content>
               <em>Usuário</em>
             </template>
 
-             <template v-if="user.loggedIn">
-            <b-nav class="ml-4">{{user.data.displayName}}</b-nav>
-            <b-dropdown-item>
-              <a @click.prevent="signOut">Sign out</a>
-            </b-dropdown-item>
-          </template>
-          <template v-else>
-            <b-dropdown-item >
-              <router-link to="/login">Entrar</router-link>
-            </b-dropdown-item>
-            <b-dropdown-item>
-              <router-link to="/register">Cadastrar</router-link>
-            </b-dropdown-item>
-          </template>
+            <template v-if="user.loggedIn">
+              <b-nav class="ml-4">{{ user.data.displayName }}</b-nav>
+
+              <b-dropdown-item>
+                <router-link to="/dashboard">Painel</router-link>
+              </b-dropdown-item>
+
+              <b-dropdown-item>
+                <a @click.prevent="signOut">Sign out</a>
+              </b-dropdown-item>
+            </template>
+
+            <template v-else>
+              <b-dropdown-item>
+                <router-link to="/login">Entrar</router-link>
+              </b-dropdown-item>
+
+              <b-dropdown-item>
+                <router-link to="/register">Cadastrar</router-link>
+              </b-dropdown-item>
+            </template>
             <!-- <b-dropdown-item>
               <router-link to="/login">Entrar</router-link>
             </b-dropdown-item>
@@ -63,13 +63,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import firebase from 'firebase'
+import { mapGetters } from "vuex";
+import firebase from "firebase";
 export default {
   computed: {
     ...mapGetters({
-      user: 'user'
-    })
+      user: "user",
+    }),
   },
   methods: {
     signOut() {
@@ -78,12 +78,12 @@ export default {
         .signOut()
         .then(() => {
           this.$router.replace({
-            name: 'home'
-          })
-        })
-    }
-  }
-}
+            name: "home",
+          });
+        });
+    },
+  },
+};
 </script>
 
 <style lang="css">

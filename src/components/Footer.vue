@@ -24,7 +24,7 @@ footer {
   background-color: rgb(32, 30, 30);
   padding: 0.6rem;
   color: #ddd;
-  margin: 1rem auto;
+  margin: 0 auto;
 }
 
 .foot a:link {

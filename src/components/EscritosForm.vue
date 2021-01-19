@@ -1,6 +1,9 @@
 <template>
   <div class="dados">
-    <h1>Adicionar novo Escrito</h1>
+    <h1 class="m-4">Adicionar novo Escrito</h1>
+    <b-container>
+    <b-row>
+    <b-col>
     <b-card class="shadow">
       <b-form-input
         type="date"
@@ -34,6 +37,9 @@
         <i class="fas fa-arrow-circle-left"></i>
       </router-link>
     </b-button>
+    </b-col>
+    </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -82,8 +88,10 @@ export default {
 </script>
 
 <style lang="css">
-.dados {
-  width: 50%;
-  margin: 2rem auto;
+.btn {
+  margin: 0 auto;
+}
+i {
+  color: white;
 }
 </style>

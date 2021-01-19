@@ -1,27 +1,32 @@
 <template>
   <div>
-    <h1 class="mt-4">Bem-vindo(a), {{ user.data.displayName }}!</h1>
-    <b-button v-b-toggle.sidebar-right>Painel</b-button>
-    <b-sidebar id="sidebar-right" title="Painel" left shadow>
-      <div class="px-3 py-2">
-        <ul class="lista">
-          <b-button variant="success">
-            <router-link to="/escritos">
-              <li><i class="fas fa-plus-square"></i> Adicionar Escritos</li>
-            </router-link>
-          </b-button>
-          <b-button>
-            <router-link to="/edit">
-              <li><i class="fas fa-pen-square"></i> Editar Escritos</li>
-            </router-link>
-
-          </b-button>
-          <b-button variant="danger">
-            <li><i class="fas fa-minus-square text-white"></i> Excluir Escritos</li>
-          </b-button>
-        </ul>
-      </div>
-    </b-sidebar>
+    <h1 class="m-4">Bem-vindo(a), {{ user.data.displayName }}!</h1>
+    <b-container>
+      <b-row>
+        <b-col>
+          <div>
+            <b-tabs content-class="m-3">
+              <b-tab title="Adicionar Escritos">
+                <b-button variant="success">
+                  <router-link to="/escritos">
+                    <li>
+                      <i class="fas mr-4 fa-plus-square"></i>Adicionar Escritos
+                    </li>
+                  </router-link>
+                </b-button>
+              </b-tab>
+              <b-tab title="Editar Escritos">
+                <b-button variant="info">
+                  <router-link to="/edit">
+                    <li><i class="fas mr-4 fa-pen"></i>Editar Escritos</li>
+                  </router-link>
+                </b-button>
+              </b-tab>
+            </b-tabs>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -38,7 +43,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style scoped>
 .lista {
   list-style: none;
   margin: 0 auto;
@@ -47,11 +52,23 @@ export default {
 
 .btn {
   display: flex;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin: 2rem auto;
 }
 
-.fa, .fab, .fad, .fal, .far, .fas {
+a {
+  color: white;
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+
+.fa,
+.fab,
+.fad,
+.fal,
+.far,
+.fas {
   color: white;
 }
 </style>

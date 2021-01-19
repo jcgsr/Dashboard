@@ -72,8 +72,11 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style scoped>
 .login {
+  margin: 0 auto;
+}
+.btn {
   margin: 0 auto;
 }
 </style>

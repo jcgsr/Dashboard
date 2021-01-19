@@ -1,42 +1,51 @@
 <template>
   <div class="edit">
     <h1 class="mt-4">{{ msg }}</h1>
-    <b-list-group>
-      <b-list-group-item>
-        <b-card class="shadow">
-          <ul class="list-group">
-            <li v-for="(dado, id) in usuarioDados" :key="id">
-              <strong>Nome da Obra:</strong> <br>
-              {{ dado.nome_obra }}
-              <hr>
-              <br />
-              <strong>Obra:</strong> <br>
-              {{ dado.obra }} <br>
-              <b-button variant="info" @click="carregar(id)" class="mt-4 mr-4"
-                >Carregar Escrito</b-button
-              >
-              <b-button variant="danger" @click="excluir(id)" class="mt-4"
-                >Excluir Escrito</b-button
-              >
-              <hr id="hr-hr">
-            </li>
-          </ul>
-        </b-card>
-      </b-list-group-item>
-    </b-list-group>
+    <b-container>
+      <b-row>
+        <b-col>
+          <b-list-group>
+            <b-list-group-item>
+              <b-card class="shadow">
+                <ul class="list-group">
+                  <li v-for="(dado, id) in usuarioDados" :key="id">
+                    <strong>Nome da Obra:</strong> <br />
+                    {{ dado.nome_obra }}
+                    <hr />
+                    <br />
+                    <strong>Obra:</strong> <br />
+                    {{ dado.obra }} <br />
+                    <b-button
+                      variant="info"
+                      @click="carregar(id)"
+                      class="mt-4 mr-4"
+                      >Carregar Escrito</b-button
+                    >
+                    <b-button variant="danger" @click="excluir(id)" class="mt-4"
+                      >Excluir Escrito</b-button
+                    >
+                    <hr id="hr-hr" />
+                  </li>
+                </ul>
+              </b-card>
+            </b-list-group-item>
+          </b-list-group>
 
-    <b-form-input> </b-form-input>
+          <b-form-input> </b-form-input>
 
-    <b-button variant="warning" @click="mostrar" class="mt-4"
-      >Mostrar Escritos</b-button
-    >
+          <b-button variant="warning" @click="mostrar" class="mt-4"
+            >Mostrar Escritos</b-button
+          >
 
-    <br />
-    <b-button class="mt-4">
-      <router-link to="/dashboard">
-        <i class="fas fa-arrow-circle-left"></i>
-      </router-link>
-    </b-button>
+          <br />
+          <b-button class="mt-4">
+            <router-link to="/dashboard">
+              <i class="fas fa-arrow-circle-left"></i>
+            </router-link>
+          </b-button>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -76,13 +85,13 @@ export default {
 };
 </script>
 <style scoped>
-.list-group {
-  text-align: center;
-  list-style: none;
-  width: 80%;
-  margin: 0 auto;
-}
 #hr-hr {
-border-top: 2px solid green;
+  border-top: 2px solid green;
+}
+i {
+  color: white;
+}
+li {
+  list-style: none;
 }
 </style>
