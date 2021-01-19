@@ -1,10 +1,8 @@
 <template>
   <footer class="footer">
-    &copy;2020 - {{ new Date().getFullYear() }}.{{ footer }}
-    <div>
+    &copy;2020 - {{ new Date().getFullYear() }}.{{ footer }} <br>
       {{ msg }}
       <a :href="link"><b-button variant="info">Jovane</b-button></a>
-    </div>
   </footer>
 </template>
 
