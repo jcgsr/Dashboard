@@ -1,6 +1,9 @@
 <template>
   <div class="login">
     <h1>Login</h1>
+    <b-container>
+    <b-row>
+    <b-col lg="8" offset-lg="2">
     <b-card class="shadow">
       <div v-if="error" class="alert alert-danger">{{ error }}</div>
       <b-form @submit.prevent="submit" v-if="show">
@@ -32,6 +35,9 @@
         <b-button type="submit" variant="primary">Entrar</b-button>
       </b-form>
     </b-card>
+    </b-col>
+    </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -68,7 +74,6 @@ export default {
 
 <style lang="css">
 .login {
-  width: 40%;
   margin: 0 auto;
 }
 </style>

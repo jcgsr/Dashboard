@@ -20,13 +20,13 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style scoped>
 footer {
   text-align: center;
   background-color: rgb(32, 30, 30);
   padding: 0.6rem;
   color: #ddd;
-  margin-top: 1rem;
+  margin: 1rem auto;
 }
 
 .foot a:link {
