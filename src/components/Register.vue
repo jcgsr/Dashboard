@@ -71,20 +71,23 @@ export default {
           data.user.updateProfile({
               displayName: this.form.name,
             })
+            this.writeUser()
            .then(() => {});
             alert('Cadastro efetuado com sucesso!')
             this.form.name = ''
             this.form.email = ''
             this.form.password = ''
         })
-      const uid = firebase.auth().currentUser.uid
-        return firebase.database().ref('usuarios').child(uid).set({
-          name: this.form.name
-            })
-       .catch((err) => {
+      .catch((err) => {
          this.error = err.message;
         });
     },
+    writeUser(userId, name, email) {
+      firebase.database().ref('usuarios/' + userId).set({
+        name: name,
+        email: email
+          })
+    }
   },
 };
 </script>

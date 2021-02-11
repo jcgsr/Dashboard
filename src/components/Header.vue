@@ -11,18 +11,7 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-form>
-            <b-form-input
-              size="sm"
-              class="mr-sm-2"
-              placeholder="Escritor"
-            ></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit"
-              >Procurar</b-button
-            >
-          </b-nav-form>
-
-          <b-nav-item-dropdown right>
+         <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template v-slot:button-content>
               <em>Usuário</em>
@@ -42,19 +31,13 @@
 
             <template v-else>
               <b-dropdown-item>
-                <router-link to="/login">Entrar</router-link>
+                <router-link to="/login">Login</router-link>
               </b-dropdown-item>
 
               <b-dropdown-item>
-                <router-link to="/register">Cadastrar</router-link>
+                <router-link to="/escritos">Enviar Escrito</router-link>
               </b-dropdown-item>
             </template>
-            <!-- <b-dropdown-item>
-              <router-link to="/login">Entrar</router-link>
-            </b-dropdown-item>
-            <b-dropdown-item>
-              <router-link to="/register">Cadastrar</router-link>
-            </b-dropdown-item> -->
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -65,11 +48,36 @@
 <script>
 import { mapGetters } from "vuex";
 import firebase from "firebase";
+
 export default {
+  name: "Header",
+  data() {
+    return {
+      name: "header",
+      searchQuery: null,
+      resources: [
+        { author: "Jovane", uri: "jovane" },
+        { author: "Manoel Bandeira", uri: "manoel" },
+        { author: "Carlos Drummond de Andrade", uri: "drummond" },
+      ],
+    };
+  },
   computed: {
     ...mapGetters({
       user: "user",
     }),
+    resultQuery() {
+      if (this.searchQuery) {
+        return this.resources.filter((item) => {
+          return this.searchQuery
+            .toLowerCase()
+            .split(" ")
+            .every((v) => item.author.toLowerCase().includes(v));
+        });
+      } else {
+        return this.resources;
+      }
+    },
   },
   methods: {
     signOut() {

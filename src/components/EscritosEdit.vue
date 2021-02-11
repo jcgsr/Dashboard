@@ -16,7 +16,7 @@
                     <strong>Obra:</strong> <br />
                     {{ dado.obra }} <br />
                     <b-button
-                      variant="info"
+                      variant="dark"
                       @click="carregar(id)"
                       class="mt-4 mr-4"
                       >Carregar Escrito</b-button

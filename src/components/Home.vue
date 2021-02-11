@@ -5,22 +5,24 @@
     </h1>
     <img src="../assets/pen.jpg" alt="Foto de uma Caneta" v-show="fotoShow" />
     <b-container class="escritos mt-2">
-    <b-row>
-    <b-col>
-      <b-button class="m-4" @click="handler()" variant="success">Escritos</b-button>
-      <b-list-group>
-        <b-list-group-item v-for="(usuario, id) in usuarios" :key="id">
-          <strong>Autor: </strong> {{ usuario.nome_autor }} <br />
-          <strong>Obra: </strong> {{ usuario.nome_obra }} <br />
-          <b-card class="shadow">
-          <div v-html="usuario.obra">
-            {{ usuario.obra }}
-          </div>
-          </b-card>
-        </b-list-group-item>
-      </b-list-group>
-    </b-col>
-    </b-row>
+      <b-row>
+        <b-col>
+          <b-button class="m-4" @click="handler()" variant="success"
+            >Ler Escritos</b-button
+          >
+         <b-list-group>
+            <b-list-group-item v-for="(usuario, id) in usuarios" :key="id">
+              <strong>Autor: </strong> {{ usuario.nome_autor }} <br />
+              <strong> Obra: </strong> {{ usuario.nome_obra }} <br />
+              <b-card class="shadow text-left">
+                <div v-html="usuario.obra">
+                  {{ usuario.obra }}
+                </div>
+              </b-card>
+            </b-list-group-item>
+          </b-list-group>
+        </b-col>
+      </b-row>
     </b-container>
   </div>
 </template>
@@ -32,19 +34,19 @@ export default {
     return {
       msg: "Meus Escritos",
       usuarios: [],
-      fotoShow: true
+      fotoShow: true,
     };
   },
   methods: {
     obterEscritos() {
       this.$http.get("usuarios.json").then((res) => {
         this.usuarios = res.data;
+        this.$toasted.show("As personagens e o universo ficcional de todas as obras nesse site são propriedade exclusiva de seus criadores. Este site é apenas um veículo para que se possa divulgar os Escritos dos escritores (principalmente de estudantes) para um público mais amplo, sem fins lucrativos.")
       });
     },
     handler() {
-      this.obterEscritos(),
-      this.fotoShow = false
-    }
+      this.obterEscritos(), (this.fotoShow = false);
+    },
   },
 };
 </script>

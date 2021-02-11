@@ -16,7 +16,7 @@
                 </b-button>
               </b-tab>
               <b-tab title="Editar Escritos">
-                <b-button variant="info">
+                <b-button variant="warning">
                   <router-link to="/edit">
                     <li><i class="fas mr-4 fa-pen"></i>Editar Escritos</li>
                   </router-link>

@@ -4,7 +4,7 @@
     <b-container>
     <b-row>
     <b-col lg="8" offset-lg="2">
-    <b-card class="shadow">
+    <b-card class="shadow mb-4">
       <div v-if="error" class="alert alert-danger">{{ error }}</div>
       <b-form @submit.prevent="submit" v-if="show">
         <b-form-group
