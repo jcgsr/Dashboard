@@ -18,7 +18,7 @@
               class="mb-2"
             ></b-form-input>
             <p id="obr">*Campo obrigatório</p>
-             <b-form-input
+            <b-form-input
               type="text"
               placeholder="Nome do Autor"
               class="mb-2"
@@ -53,12 +53,12 @@
 
 <script>
 // import firebase from "firebase";
-import { VueEditor } from "vue2-editor"
+import { VueEditor } from "vue2-editor";
 export default {
-name: "EscritosFormulário",
+  name: "EscritosFormulário",
   components: {
-  VueEditor
-            },
+    VueEditor,
+  },
   data() {
     return {
       name: "usuarios",
@@ -71,30 +71,30 @@ name: "EscritosFormulário",
         nome_obra: "",
         obra: "",
       },
-    }
+    };
   },
   methods: {
-   limpar() {
-      this.usuario.data_obra = "",
-      this.usuario.nome_autor = "",
-      this.usuario.nome_obra = "",
-      this.usuario.obra = "",
-      this.usuario.email = ""
+    limpar() {
+      (this.usuario.data_obra = ""),
+        (this.usuario.nome_autor = ""),
+        (this.usuario.nome_obra = ""),
+        (this.usuario.obra = ""),
+        (this.usuario.email = "");
     },
     salvar() {
-      let email = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
-      if (this.usuario.email !== email) {
-        alert("Não é um e-mail válido!")
+      let email = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+      if (this.usuario.email == email) {
+        const metodo = this.id ? "patch" : "post";
+        const finalUrl = this.id ? `${this.id}.json` : ".json";
+        this.$http[metodo](`usuarios${finalUrl}`, this.usuario);
+        alert("Escrito adicionado com sucesso!");
+        this.limpar();
       } else {
-      const metodo = this.id ? "patch" : "post"
-      const finalUrl = this.id ? `${this.id}.json` : ".json"
-      this.$http[metodo](`usuarios${finalUrl}`, this.usuario)
-      alert('Escrito adicionado com sucesso!')
-      this.limpar()
-   }
-  }
-}
-}
+        alert("Não é um e-mail válido!");
+      }
+    },
+  },
+};
 </script>
 
 <style lang="css">
