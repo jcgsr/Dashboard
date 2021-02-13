@@ -82,7 +82,7 @@ name: "EscritosFormulário",
       this.usuario.email = ""
     },
     salvar() {
-      let email = /\S+@\S+\.\S+/
+      let email = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
       if (this.usuario.email !== email) {
         alert("Não é um e-mail válido!")
       } else {
