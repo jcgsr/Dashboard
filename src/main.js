@@ -7,6 +7,9 @@ import store from "./store";
 import router from "./router";
 import "./axios";
 
+import ReadMore from "vue-read-more";
+Vue.use(ReadMore);
+
 import VueSmoothScroll from "vue2-smooth-scroll";
 Vue.use(VueSmoothScroll);
 

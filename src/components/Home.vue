@@ -20,9 +20,10 @@
               <strong>Autor: </strong> {{ usuario.nome_autor }} <br />
               <strong> Obra: </strong> {{ usuario.nome_obra }} <br />
               <b-card class="shadow text-left">
-                <div v-html="usuario.obra">
+              <read-more more-str="continuar lendo..." :text="usuario.obra" link="#" less-str="mostrar menos" :max-chars="300"></read-more>
+               <!-- <div v-html="usuario.obra">
                   {{ usuario.obra }}
-                </div>
+                </div> -->
                 <a href="#btn" v-smooth-scroll>
                   <i class="fas fa-arrow-circle-up"></i>
                 </a>
