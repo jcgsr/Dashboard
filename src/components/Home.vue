@@ -6,6 +6,7 @@
     <img
       src="../assets/pen.jpg"
       id="pen"
+      class="animate__animated animate__fadeIn"
       alt="Foto de uma Caneta"
       v-show="fotoShow"
     />

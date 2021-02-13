@@ -94,7 +94,7 @@ export default {
         const metodo = this.id ? "patch" : "post";
         const finalUrl = this.id ? `${this.id}.json` : ".json";
         this.$http[metodo](`usuarios${finalUrl}`, this.usuario);
-        alert("Escrito adicionado com sucesso!");
+        alert("Escrito enviado com sucesso!");
         this.limpar();
       } else {
         alert("E-mail inválido!");

@@ -3,8 +3,7 @@
     <Header />
     <transition
       mode="out-in"
-      enter-active-class="animate__animated animate__jello"
-      leave-active-class="animate__animated animate__jello"
+      enter-active-class="animate__animated animate__fadeIn"
     >
       <router-view></router-view>
     </transition>
