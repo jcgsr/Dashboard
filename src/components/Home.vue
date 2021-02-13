@@ -3,14 +3,19 @@
     <h1 class="animate__animated animate__backInUp mt-4 display-1">
       {{ msg }}
     </h1>
-    <img src="../assets/pen.jpg" alt="Foto de uma Caneta" v-show="fotoShow" />
+    <img
+      src="../assets/pen.jpg"
+      id="pen"
+      alt="Foto de uma Caneta"
+      v-show="fotoShow"
+    />
     <b-container class="escritos mt-2">
       <b-row>
         <b-col>
-          <b-button class="m-4" @click="handler()" variant="success"
+          <b-button class="m-4" id="btn" @click="handler()" variant="success"
             >Ler Escritos</b-button
           >
-         <b-list-group>
+          <b-list-group>
             <b-list-group-item v-for="(usuario, id) in usuarios" :key="id">
               <strong>Autor: </strong> {{ usuario.nome_autor }} <br />
               <strong> Obra: </strong> {{ usuario.nome_obra }} <br />
@@ -18,6 +23,9 @@
                 <div v-html="usuario.obra">
                   {{ usuario.obra }}
                 </div>
+                <a href="#btn" v-smooth-scroll>
+                  <i class="fas fa-arrow-circle-up"></i>
+                </a>
               </b-card>
             </b-list-group-item>
           </b-list-group>
@@ -41,7 +49,9 @@ export default {
     obterEscritos() {
       this.$http.get("usuarios.json").then((res) => {
         this.usuarios = res.data;
-        this.$toasted.show("As personagens e o universo ficcional de todas as obras nesse site são propriedade exclusiva de seus criadores. Este site é apenas um veículo para que se possa divulgar os Escritos dos escritores (principalmente de estudantes) para um público mais amplo, sem fins lucrativos.")
+        this.$toasted.show(
+          "As personagens e o universo ficcional de todas as obras nesse site são propriedade exclusiva de seus criadores e, por isso, de sua inteira responsabilidade. Este site é apenas um veículo para que se possa divulgar os Escritos dos escritores (principalmente de estudantes) para um público mais amplo, sem fins lucrativos."
+        );
       });
     },
     handler() {
@@ -61,7 +71,9 @@ h1 {
   color: rgb(87, 81, 81);
   opacity: 0.8;
 }
-
+i {
+  color: gray;
+}
 img {
   width: 60%;
 }
@@ -79,6 +91,11 @@ li {
 }
 a {
   color: #42b983;
+}
+.escritos,
+.text-left,
+.hello, #btn {
+  scroll-behavior: smooth;
 }
 .btn {
   margin: 0 auto;

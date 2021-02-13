@@ -7,9 +7,12 @@ import store from "./store";
 import router from "./router";
 import "./axios";
 
+import VueSmoothScroll from "vue2-smooth-scroll";
+Vue.use(VueSmoothScroll);
+
 import Toasted from "vue-toasted";
 Vue.use(Toasted, {
-  duration: 9000,
+  duration: 10000,
   position: "top-center",
   action: {
     text: "Entendi!",

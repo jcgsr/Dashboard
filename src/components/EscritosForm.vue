@@ -17,6 +17,7 @@
               v-model="usuario.email"
               class="mb-2"
             ></b-form-input>
+            <p id="obr">*Campo obrigatório</p>
              <b-form-input
               type="text"
               placeholder="Nome do Autor"
@@ -54,7 +55,7 @@
 // import firebase from "firebase";
 import { VueEditor } from "vue2-editor"
 export default {
-name: "Escritos Formulário",
+name: "EscritosFormulário",
   components: {
   VueEditor
             },
@@ -99,6 +100,11 @@ name: "Escritos Formulário",
 <style lang="css">
 .btn {
   margin: 0 auto;
+}
+#obr {
+  font-size: x-small;
+  color: red;
+  text-align: left;
 }
 i {
   color: white;

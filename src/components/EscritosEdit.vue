@@ -15,13 +15,7 @@
                     <br />
                     <strong>Obra:</strong> <br />
                     {{ dado.obra }} <br />
-                    <b-button
-                      variant="dark"
-                      @click="carregar(id)"
-                      class="mt-4 mr-4"
-                      >Carregar Escrito</b-button
-                    >
-                    <b-button variant="danger" @click="excluir(id)" class="mt-4"
+                   <b-button variant="danger" @click="excluir(id)" class="mt-4"
                       >Excluir Escrito</b-button
                     >
                     <hr id="hr-hr" />
@@ -70,16 +64,9 @@ export default {
         console.log(this.usuarioDados);
       });
     },
-    carregar(id) {
-      this.id = id;
-      this.usuario = { ...this.usuarioDados[id] };
-    },
-    excluir(id) {
+   excluir(id) {
       this.$http.delete(`/usuarios/${id}.json`).then(() => this.limpar());
       alert("Escrito excluído com sucesso!");
-    },
-    limpar() {
-      (this.usuario.nome_obra = ""), (this.usuario.obra = "");
     },
   },
 };

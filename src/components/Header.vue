@@ -10,11 +10,23 @@
         <b-navbar-nav> </b-navbar-nav>
 
         <!-- Right aligned nav items -->
+
         <b-navbar-nav class="ml-auto">
-         <b-nav-item-dropdown right>
+          <b-nav-item>
+            <router-link to="/info">
+              <i class="fas fa-info-circle"></i>
+            </router-link>
+          </b-nav-item>
+          <b-nav-item>
+            <router-link to="/escritos">
+              <i class="fas fa-pen-square"></i>
+            </router-link>
+          </b-nav-item>
+
+          <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template v-slot:button-content>
-              <em>Usuário</em>
+              <i class="fas fa-user"></i>
             </template>
 
             <template v-if="user.loggedIn">
@@ -32,10 +44,6 @@
             <template v-else>
               <b-dropdown-item>
                 <router-link to="/login">Login</router-link>
-              </b-dropdown-item>
-
-              <b-dropdown-item>
-                <router-link to="/escritos">Enviar Escrito</router-link>
               </b-dropdown-item>
             </template>
           </b-nav-item-dropdown>

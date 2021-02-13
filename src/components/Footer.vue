@@ -12,7 +12,7 @@ export default {
     return {
       footer: " Meus Escritos",
       msg: "Site criado e desenvolvido por ",
-      link: '"https://jcgsr.github.io/",',
+      link: "https://jcgsr.github.io/",
     };
   },
 };

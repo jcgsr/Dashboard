@@ -39,6 +39,14 @@ export default {
       });
     },
   },
+  watch: {
+      '$route':{
+        handler: (to) => {
+          document.title = to.meta.title || 'Meus Escritos'
+        },
+         immediate: true
+      }
+    },
   mounted() {
     this.today();
   },
