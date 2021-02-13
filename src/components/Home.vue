@@ -16,6 +16,13 @@
           <b-button class="m-4" id="btn" @click="handler()" variant="success"
             >Ler Escritos</b-button
           >
+          <b-button class="m-4" @click="$router.push('escritos')" variant="warning" 
+            >
+              <i class="fas fa-pen"></i>
+ 
+            </b-button
+          >
+
           <b-list-group>
             <b-list-group-item v-for="(usuario, id) in usuarios" :key="id">
               <strong>Autor: </strong> {{ usuario.nome_autor }} <br />
@@ -75,6 +82,7 @@ h1 {
 }
 i {
   color: gray;
+  font-size: 1.5rem;
 }
 img {
   width: 60%;

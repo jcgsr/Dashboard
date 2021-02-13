@@ -106,4 +106,7 @@ export default {
 #id {
   margin: 0 auto;
 }
+i {
+    font-size: 1.5rem;
+  }
 </style>

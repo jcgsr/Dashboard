@@ -15,7 +15,7 @@
             <ul>
               <li>
                 Na tela principal (Home), clique na caneta em
-                <img src="../assets/enviar.png" alt="Foto Enviar" />.
+                <img src="../assets/enviar.png" alt="Foto Enviar" /> ou em <img src="../assets/enviar2.png" alt="Foto Enviar">.
               </li>
               <li>
                 Na tela seguinte, preencha os dados. Atenção para o campo
