@@ -11,13 +11,23 @@
               class="mb-2"
             ></b-form-input>
             <b-form-input
+              class="form-control mb-2"
+              @submit.prevent="handleSubmit"
+              :class="{
+                'is-invalid': $v.usuario.email.$error,
+                'is-valid': !$v.usuario.email.$invalid,
+              }"
               type="email"
-              placeholder="E-mail"
+              placeholder="E-mail*"
               required
-              v-model="usuario.email"
-              class="mb-2"
+              v-model.trim="$v.usuario.email.$model"
             ></b-form-input>
-            <p id="obr">*Campo obrigatório</p>
+            <div class="invalid-feedback">
+              <span v-if="!$v.usuario.email.required"
+                >E-mail é obrigatório</span
+              >
+              <span v-if="!$v.usuario.email.isUnique">E-mail inválido</span>
+            </div>
             <b-form-input
               type="text"
               placeholder="Nome do Autor"
@@ -31,6 +41,7 @@
               v-model="usuario.nome_obra"
             ></b-form-input>
 
+            <p id="obr">*Campo obrigatório</p>
             <!-- Vue2Editor -->
             <div class="vue_editor">
               <vue-editor v-model="usuario.obra"></vue-editor>
@@ -54,6 +65,7 @@
 <script>
 // import firebase from "firebase";
 import { VueEditor } from "vue2-editor";
+import { required, email } from "vuelidate/lib/validators";
 export default {
   name: "EscritosFormulário",
   components: {
@@ -64,7 +76,6 @@ export default {
       name: "usuarios",
       usuarioDados: "",
       id: null,
-      reg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
       usuario: {
         data_obra: "",
         nome_autor: "",
@@ -74,6 +85,24 @@ export default {
       },
     };
   },
+  validations: {
+    usuario: {
+      email: {
+        required,
+        email,
+        isUnique(value) {
+          if (value === "") return true;
+          // eslint-disable-next-line
+          let email_regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve(email_regex.test(value));
+            }, 350 + Math.random() * 300);
+          });
+        },
+      },
+    },
+  },
   methods: {
     limpar() {
       (this.usuario.data_obra = ""),
@@ -82,22 +111,18 @@ export default {
         (this.usuario.obra = ""),
         (this.usuario.email = "");
     },
-    isEmailValid: function() {
-      return this.usuario.email == ""
-        ? ""
-        : this.reg.test(this.email)
-        ? "E-mail válido!"
-        : "E-mail inválido!";
-    },
     salvar() {
-      if (this.isEmailValid) {
+      let filter = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ 
+      if (this.usuario.email === "") {
+        alert("E-mail é obrigatório!");
+      } else if (!this.usuario.email.match(filter)) {
+          alert('Não é um e-mail válido!')
+        } else {
         const metodo = this.id ? "patch" : "post";
         const finalUrl = this.id ? `${this.id}.json` : ".json";
         this.$http[metodo](`usuarios${finalUrl}`, this.usuario);
         alert("Escrito enviado com sucesso!");
         this.limpar();
-      } else {
-        alert("E-mail inválido!");
       }
     },
   },

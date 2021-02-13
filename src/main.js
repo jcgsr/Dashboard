@@ -13,6 +13,9 @@ Vue.use(ReadMore);
 import VueSmoothScroll from "vue2-smooth-scroll";
 Vue.use(VueSmoothScroll);
 
+import Vuelidate from "vuelidate";
+Vue.use(Vuelidate);
+
 import Toasted from "vue-toasted";
 Vue.use(Toasted, {
   duration: 10000,
