@@ -46,8 +46,8 @@
             <div class="vue_editor">
               <vue-editor v-model="usuario.obra"></vue-editor>
             </div>
-
-            <b-button class="mt-2" @click.prevent="salvar" variant="success"
+             <audio id="play" src="../assets/writing.mp3"></audio>
+            <b-button class="mt-2" @click.prevent="handler()" variant="success"
               >Enviar Escrito</b-button
             >
           </b-card>
@@ -75,6 +75,7 @@ export default {
     return {
       name: "usuarios",
       usuarioDados: "",
+      sound: "../assets/writing.mp3",
       id: null,
       usuario: {
         data_obra: "",
@@ -112,18 +113,24 @@ export default {
         (this.usuario.email = "");
     },
     salvar() {
-      let filter = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ 
+      let filter = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (this.usuario.email === "") {
         alert("E-mail é obrigatório!");
       } else if (!this.usuario.email.match(filter)) {
-          alert('Não é um e-mail válido!')
-        } else {
+        alert("Não é um e-mail válido!");
+      } else {
         const metodo = this.id ? "patch" : "post";
         const finalUrl = this.id ? `${this.id}.json` : ".json";
         this.$http[metodo](`usuarios${finalUrl}`, this.usuario);
         alert("Escrito enviado com sucesso!");
         this.limpar();
       }
+    },
+    playSound() {
+      document.querySelector("#play").play();
+    },
+    handler() {
+      this.salvar(), this.playSound();
     },
   },
 };
