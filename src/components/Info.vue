@@ -47,11 +47,22 @@
             </ul>
 
             <b-card-sub-title>Disclaimer</b-card-sub-title>
-            As personagens e o universo ficcional de todas as obras nesse site
+   <p>         As personagens e o universo ficcional de todas as obras nesse site
             são propriedade exclusiva de seus criadores e, por isso, de sua
             inteira responsabilidade. Este site é apenas um veículo para que se
             possa divulgar os Escritos dos escritores (principalmente de
-            estudantes) para um público mais amplo, sem fins lucrativos.
+            estudantes) para um público mais amplo, sem fins lucrativos.</p>
+
+            <b-card-sub-title>Contatos</b-card-sub-title>
+            <a :href="zap">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a :href="telegram">
+              <i class="fab fa-telegram-plane"></i>
+            </a>
+            <a :href="email">
+              <i class="far fa-envelope"></i>
+            </a>
           </b-card-text>
         </b-card>
       </b-col>
@@ -64,7 +75,7 @@ export default {
     name: "Info",
     data() {
         return {
-            zap: "https://api.whatsapp.com/send?phone=5579988284730&text=Opa! Gostaria de excluir meu Escrito.",
+            zap: "https://api.whatsapp.com/send?phone=5579988284730&text=Opa! Gostaria de falar sobre Meus Escritos.",
             telegram: "https://telegram.me/jcgsr",
             email: "mailto:cabralguerra@gmail.com"
           }
@@ -89,5 +100,8 @@ li {
 img {
   width: 100px;
   height: 40px;
+}
+i {
+  margin: 1rem;
 }
 </style>

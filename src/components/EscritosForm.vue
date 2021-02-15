@@ -46,6 +46,7 @@
             <div class="vue_editor">
               <vue-editor v-model="usuario.obra"></vue-editor>
             </div>
+            <vue-recaptcha sitekey="6LfealkaAAAAALSUbaChAdKbElfF9X3uEItoQmAs"></vue-recaptcha>
              <audio id="play" src="../assets/writing.mp3"></audio>
             <b-button class="mt-2" @click.prevent="handler()" variant="success"
               >Enviar Escrito</b-button
@@ -66,10 +67,11 @@
 // import firebase from "firebase";
 import { VueEditor } from "vue2-editor";
 import { required, email } from "vuelidate/lib/validators";
+import VueRecaptcha from 'vue-recaptcha'
 export default {
   name: "EscritosFormulário",
   components: {
-    VueEditor,
+    VueEditor, VueRecaptcha
   },
   data() {
     return {

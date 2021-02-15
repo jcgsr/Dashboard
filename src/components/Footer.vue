@@ -1,8 +1,6 @@
 <template>
   <footer class="footer">
-    &copy;2020 - {{ new Date().getFullYear() }}.{{ footer }} <br>
-      {{ msg }}
-      <a :href="link"><b-button variant="info">Jovane</b-button></a>
+    {{ footer }} <br> &copy;2020 - {{ new Date().getFullYear() }} 
   </footer>
 </template>
 
@@ -11,8 +9,6 @@ export default {
   data() {
     return {
       footer: " Meus Escritos",
-      msg: "Site criado e desenvolvido por ",
-      link: "https://jcgsr.github.io/",
     };
   },
 };
@@ -25,6 +21,7 @@ footer {
   padding: 0.6rem;
   color: #ddd;
   margin: 0 auto;
+  font-size: smaller;
 }
 
 .foot a:link {
