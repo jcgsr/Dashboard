@@ -131,8 +131,8 @@ export default {
         this.limpar();
       }
     },
-    verify() {
-      this.robot == false
+    verify(response) {
+      if (response) this.robot = false
     },
     playSound() {
       document.querySelector("#play").play();
