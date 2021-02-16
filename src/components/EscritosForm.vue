@@ -46,7 +46,9 @@
             <div class="vue_editor">
               <vue-editor v-model="usuario.obra"></vue-editor>
             </div>
-            <vue-recaptcha ref="recaptcha" @click="verify" sitekey="6LfealkaAAAAALSUbaChAdKbElfF9X3uEItoQmAs"></vue-recaptcha>
+            <vue-recaptcha ref="recaptcha" @click="verify" sitekey="6LfealkaAAAAALSUbaChAdKbElfF9X3uEItoQmAs">
+              <b-button class="mt-2" >Click me</b-button>
+            </vue-recaptcha>
              <audio id="play" src="../assets/writing.mp3"></audio>
             <b-button class="mt-2" @click.prevent="handler()" variant="success"
               >Enviar Escrito</b-button
