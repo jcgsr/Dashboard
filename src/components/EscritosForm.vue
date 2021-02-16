@@ -46,8 +46,6 @@
             <div class="vue_editor">
               <vue-editor v-model="usuario.obra"></vue-editor>
             </div>
-            <vue-recaptcha ref="recaptcha" v-model="robot" sitekey="6LfealkaAAAAALSUbaChAdKbElfF9X3uEItoQmAs">
-            </vue-recaptcha>
              <audio id="play" src="../assets/writing.mp3"></audio>
             <b-button class="mt-2" @click.prevent="handler()" variant="success"
               >Enviar Escrito</b-button
@@ -68,11 +66,10 @@
 // import firebase from "firebase";
 import { VueEditor } from "vue2-editor";
 import { required, email } from "vuelidate/lib/validators";
-import VueRecaptcha from 'vue-recaptcha'
 export default {
   name: "EscritosFormulário",
   components: {
-    VueEditor, VueRecaptcha
+    VueEditor 
   },
   data() {
     return {
@@ -80,7 +77,6 @@ export default {
       usuarioDados: "",
       sound: "../assets/writing.mp3",
       id: null,
-      robot: "",
       usuario: {
         data_obra: "",
         nome_autor: "",
@@ -122,6 +118,8 @@ export default {
         alert("E-mail é obrigatório!");
       } else if (!this.usuario.email.match(filter)) {
         alert("Não é um e-mail válido!");
+      } else if (this.robot) {
+        alert("Recaptcha necessário!")
       } else {
         const metodo = this.id ? "patch" : "post";
         const finalUrl = this.id ? `${this.id}.json` : ".json";
@@ -130,16 +128,11 @@ export default {
         this.limpar();
       }
     },
-    verify() {
-      if (this.robot) {
-        alert("Recaptcha")
-      } 
-    },
     playSound() {
       document.querySelector("#play").play();
     },
     handler() {
-      this.salvar(), this.playSound(), this.verify();
+      this.salvar(), this.playSound();
     },
   },
 };
