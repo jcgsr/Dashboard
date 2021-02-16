@@ -46,7 +46,7 @@
             <div class="vue_editor">
               <vue-editor v-model="usuario.obra"></vue-editor>
             </div>
-            <vue-recaptcha sitekey="6LfealkaAAAAALSUbaChAdKbElfF9X3uEItoQmAs"></vue-recaptcha>
+            <vue-recaptcha ref="recaptcha" @click="verify" sitekey="6LfealkaAAAAALSUbaChAdKbElfF9X3uEItoQmAs"></vue-recaptcha>
              <audio id="play" src="../assets/writing.mp3"></audio>
             <b-button class="mt-2" @click.prevent="handler()" variant="success"
               >Enviar Escrito</b-button
@@ -79,6 +79,7 @@ export default {
       usuarioDados: "",
       sound: "../assets/writing.mp3",
       id: null,
+      robot: true,
       usuario: {
         data_obra: "",
         nome_autor: "",
@@ -120,6 +121,8 @@ export default {
         alert("E-mail é obrigatório!");
       } else if (!this.usuario.email.match(filter)) {
         alert("Não é um e-mail válido!");
+      } else if (this.robot) {
+        alert("Recaptcha necessário!")
       } else {
         const metodo = this.id ? "patch" : "post";
         const finalUrl = this.id ? `${this.id}.json` : ".json";
@@ -127,6 +130,9 @@ export default {
         alert("Escrito enviado com sucesso!");
         this.limpar();
       }
+    },
+    verify() {
+      this.robot == false
     },
     playSound() {
       document.querySelector("#play").play();
