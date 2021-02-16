@@ -46,7 +46,7 @@
             <div class="vue_editor">
               <vue-editor v-model="usuario.obra"></vue-editor>
             </div>
-            <vue-recaptcha ref="recaptcha" @verify="onVerify" sitekey="6LfealkaAAAAALSUbaChAdKbElfF9X3uEItoQmAs">
+            <vue-recaptcha ref="recaptcha" v-model="robot" sitekey="6LfealkaAAAAALSUbaChAdKbElfF9X3uEItoQmAs">
             </vue-recaptcha>
              <audio id="play" src="../assets/writing.mp3"></audio>
             <b-button class="mt-2" @click.prevent="handler()" variant="success"
@@ -80,7 +80,7 @@ export default {
       usuarioDados: "",
       sound: "../assets/writing.mp3",
       id: null,
-      robot: false,
+      robot: "",
       usuario: {
         data_obra: "",
         nome_autor: "",
@@ -130,18 +130,16 @@ export default {
         this.limpar();
       }
     },
-    onVerify(response) {
-      if (response) {
-        this.robot = true      
-      } else {
-        alert ("Recaptcha!")
-      }
+    verify() {
+      if (this.robot) {
+        alert("Recaptcha")
+      } 
     },
     playSound() {
       document.querySelector("#play").play();
     },
     handler() {
-      this.salvar(), this.playSound(), this.onVerify();
+      this.salvar(), this.playSound(), this.verify();
     },
   },
 };
