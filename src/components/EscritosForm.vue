@@ -122,8 +122,6 @@ export default {
         alert("E-mail é obrigatório!");
       } else if (!this.usuario.email.match(filter)) {
         alert("Não é um e-mail válido!");
-      } else if (this.robot) {
-        alert("Recaptcha necessário!")
       } else {
         const metodo = this.id ? "patch" : "post";
         const finalUrl = this.id ? `${this.id}.json` : ".json";
@@ -133,13 +131,17 @@ export default {
       }
     },
     onVerify(response) {
-      if (response) this.robot = true
+      if (response) {
+        this.robot = true      
+      } else {
+        alert ("Recaptcha!")
+      }
     },
     playSound() {
       document.querySelector("#play").play();
     },
     handler() {
-      this.salvar(), this.playSound();
+      this.salvar(), this.playSound(), this.onVerify();
     },
   },
 };
