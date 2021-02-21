@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import axios from 'axios'
+import Vue from "vue";
+import axios from "axios";
 
-axios.defaults.baseURL = 'https://meusescritos-2bc34.firebaseio.com'
+axios.defaults.baseURL = "https://meusescritos-2bc34.firebaseio.com";
 
 Vue.use({
-   install(Vue) {
-      Vue.prototype.$http = axios
-   }
-})
+  install(Vue) {
+    Vue.prototype.$http = axios;
+  },
+});
