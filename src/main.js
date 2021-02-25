@@ -13,6 +13,11 @@ Vue.use(ReadMore);
 import VueSmoothScroll from "vue2-smooth-scroll";
 Vue.use(VueSmoothScroll);
 
+import VueMeta from "vue-meta";
+Vue.use(VueMeta, {
+  refreshOnceOnNavigation: true,
+});
+
 import Vuelidate from "vuelidate";
 Vue.use(Vuelidate);
 

@@ -17,6 +17,7 @@
     "popper.js": "^1.16.1",
     "vue": "^2.6.12",
     "vue-loading-spinner": "^1.0.11",
+    "vue-meta": "^2.4.0",
     "vue-read-more": "^1.1.1",
     "vue-router": "^3.4.5",
     "vue-toasted": "^1.1.28",

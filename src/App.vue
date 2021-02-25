@@ -17,6 +17,7 @@
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 
+let ROOT_PATH = "https://www.meusescritos.com.br";
 export default {
   name: "App",
   components: {
@@ -26,6 +27,7 @@ export default {
   data() {
     return {
       currentDate: "",
+      logo: ROOT_PATH + require("./assets/pen.jpg")
     };
   },
   methods: {
@@ -48,6 +50,38 @@ export default {
     },
   mounted() {
     this.today();
+  },
+   metaInfo() {
+    return {
+      meta: [
+        // Twitter Card
+        { name: "twitter:card", content: "Meus Escritos" },
+        {
+          name: "twitter:title",
+          content: "Meus Escritos - Um site para poder compartilhar literatura.",
+        },
+        {
+          name: "twitter:description",
+          content: "Meus Escritos",
+        },
+        // image must be an absolute path
+        { name: "twitter:image", content: this.logo },
+        // Facebook OpenGraph
+        {
+          property: "og:title",
+          content: "Meus Escritos - Um site para poder compartilhar literatura.",
+        },
+        { property: "og:site_name", content: "Meus Escritos" },
+        { property: "og:type", content: "website" },
+        { property: "og:image", content: this.logo },
+        { property: "og:image:width", content: "400" },
+        { property: "og:image:height", content: "300" },
+        {
+          property: "og:description",
+          content: "Meus Escritos",
+        },
+      ],
+    };
   },
 };
 </script>
