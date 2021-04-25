@@ -100,7 +100,7 @@ h1 {
   opacity: 0.8;
 }
 i {
-  color: black;
+  color: beige;
   font-size: 1.5rem;
 }
 img {
@@ -119,20 +119,28 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #12c273;
+}
+#readmore {
+  color: yellow;
 }
 .escritos,
 .text-left,
 .hello,
 #btn {
   scroll-behavior: smooth;
+  font-size: 1.3rem;
 }
 .btn {
   margin: 0 auto;
 }
 .oldpaper {
-  background-image: url("../assets/oldpaper2.jpg");
-  color: black;
+  /* background-image: url("../assets/oldpaper2.jpg"); */
+  background-color: rgb(87, 81, 81);
+  color: white;
+}
+a {
+  color: yellow;
 }
 #photo {
   display: none;
